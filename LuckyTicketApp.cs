@@ -7,6 +7,7 @@ namespace LuckyTicket
     {
         private const int LAST_TIKET_NUMBER = 999999;
         private const int COUNT_OF_RANKS = 6;
+
         private readonly LuckyTicketUI UI = new LuckyTicketUI();
 
         public void Start()
