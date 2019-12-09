@@ -8,24 +8,22 @@ namespace LuckyTicket
 {
     class MoskowAlgorithm : ITicketAlgorithm
     {
-        private const int RANK_DIVIDER = 10;
-        private readonly int COUNT_OF_RANKS;
+        private const int BISECTOR = 2;
 
-        public MoskowAlgorithm(int countOfRanks)
+        private ITicket _ticket;
+
+        public bool IsLucky(ITicket ticket)
         {
-            COUNT_OF_RANKS = countOfRanks;
-        }
-        public bool IsLucky(int number)
-        {
+            _ticket = ticket;
+
             int sumFirstHalf;
             int sumSecondHalf;
+            int countOfRanks;
 
-            var splitedNumber = new int[COUNT_OF_RANKS];
+            countOfRanks = _ticket.CountOfRanks;
 
-            splitedNumber = SplitNumber(number);
-
-            sumFirstHalf = CountHalf(splitedNumber, 0, COUNT_OF_RANKS / 2);
-            sumSecondHalf = CountHalf(splitedNumber, COUNT_OF_RANKS / 2, COUNT_OF_RANKS);
+            sumFirstHalf = CountHalf(0, countOfRanks / BISECTOR);
+            sumSecondHalf = CountHalf(countOfRanks / BISECTOR, countOfRanks);
 
             if (sumFirstHalf == sumSecondHalf)
             {
@@ -35,31 +33,13 @@ namespace LuckyTicket
             return false;
         }
 
-        private int[] SplitNumber(int number)
-        {
-            var splitedNumber = new int[COUNT_OF_RANKS];
-
-            int buff = splitedNumber.Length - 1;
-
-            while ( number > RANK_DIVIDER - 1)
-            {
-                splitedNumber[buff] = number % RANK_DIVIDER;
-                number = number / RANK_DIVIDER;
-                buff--;
-            }
-
-            splitedNumber[buff] = number;
-
-            return splitedNumber;
-        }
-
-        private int CountHalf(int[] splitedNumber, int from, int to)
+        private int CountHalf(int from, int to)
         {
             int result = 0;
 
             for (int index = from; index < to; index++)
             {
-                result += splitedNumber[index];
+                result += _ticket[index];
             }
 
             return result;

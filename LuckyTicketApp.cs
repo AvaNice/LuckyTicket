@@ -5,10 +5,15 @@ namespace LuckyTicket
 {
     class LuckyTicketApp
     {
-        private const int LAST_TIKET_NUMBER = 999999;
-        private const int COUNT_OF_RANKS = 6;
-
+        private readonly int LAST_TIKET_NUMBER;
         private readonly LuckyTicketUI UI = new LuckyTicketUI();
+        private readonly int COUNT_OF_RANKS;
+
+        public LuckyTicketApp(int lastTiketNumber, int countOfRanks)
+        {
+            LAST_TIKET_NUMBER = lastTiketNumber;
+            COUNT_OF_RANKS = countOfRanks;
+        }
 
         public void Start()
         {
@@ -66,13 +71,13 @@ namespace LuckyTicket
             {
                 case UserMode.Moskow:
 
-                    var moskowCounter = new LuckyTicketCuonter(new MoskowAlgorithm(COUNT_OF_RANKS));
+                    var moskowCounter = new LuckyTicketCuonter(new MoskowAlgorithm(), COUNT_OF_RANKS);
 
                     return moskowCounter.CountLucky(1, LAST_TIKET_NUMBER);
 
                 case UserMode.Piter:
 
-                    var piterCounter = new LuckyTicketCuonter(new PiterAlgorithm(COUNT_OF_RANKS));
+                    var piterCounter = new LuckyTicketCuonter(new PiterAlgorithm(), COUNT_OF_RANKS);
 
                     return piterCounter.CountLucky(1, LAST_TIKET_NUMBER);
 

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace LuckyTicket
 {
-    interface ITicketAlgorithm
+    interface ITicket
     {
-        bool IsLucky(ITicket ticket);
+        int CountOfRanks { get; }
+
+        int this[int index] { get; }
     }
 }

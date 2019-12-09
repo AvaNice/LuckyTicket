@@ -2,24 +2,19 @@
 {
     class PiterAlgorithm : ITicketAlgorithm
     {
-        private const int RANK_DIVIDER = 10;
-        private readonly int COUNT_OF_RANKS;
+        private const int STEP_FOR_EVEN = 2;
 
-        public PiterAlgorithm(int countOfRanks)
+        private ITicket _ticket;
+
+        public bool IsLucky(ITicket ticket)
         {
-            COUNT_OF_RANKS = countOfRanks;
-        }
-        public bool IsLucky(int number)
-        {
+            _ticket = ticket;
+
             int sumOfEven;
             int sumOfOdd;
 
-            var splitedNumber = new int[COUNT_OF_RANKS];
-
-            splitedNumber = SplitNumber(number);
-
-            sumOfEven = Count(splitedNumber, true);
-            sumOfOdd = Count(splitedNumber, false);
+            sumOfEven = Count(true);
+            sumOfOdd = Count(false);
 
             if (sumOfEven == sumOfOdd)
             {
@@ -29,37 +24,19 @@
             return false;
         }
 
-        private int[] SplitNumber(int number)
-        {
-            var splitedNumber = new int[COUNT_OF_RANKS];
-
-            int buff = splitedNumber.Length - 1;
-
-            while (number > RANK_DIVIDER - 1)
-            {
-                splitedNumber[buff] = number % RANK_DIVIDER;
-                number = number / RANK_DIVIDER;
-                buff--;
-            }
-
-            splitedNumber[buff] = number;
-
-            return splitedNumber;
-        }
-
-        private int Count(int[] splitedNumber, bool countEven)
+        private int Count(bool countEven)
         {
             int sum = 0;
             int from = 0;
 
-            if(countEven)
+            if (countEven)
             {
                 from = 1;
             }
 
-            for (int index = from; index < splitedNumber.Length; index+=2)
+            for (int index = from; index < _ticket.CountOfRanks; index += STEP_FOR_EVEN)
             {
-                sum += splitedNumber[index];
+                sum += _ticket[index];
             }
 
             return sum;
