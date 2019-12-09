@@ -20,9 +20,9 @@ namespace LuckyTicket
            
             try
             {
-                UserMode userMod = GetMode(UI.GetUserPath());
+                RunMode runMod = GetMode(UI.GetUserPath());
 
-                UI.ShowResult(RunMode(userMod).ToString());
+                UI.ShowResult(RunMode(runMod).ToString());
             }
 
             catch (IOException ex)
@@ -40,7 +40,7 @@ namespace LuckyTicket
             Start();
         }
 
-        public UserMode GetMode(string path)
+        public RunMode GetMode(string path)
         {
             StreamReader reader = new StreamReader(path);
 
@@ -50,11 +50,11 @@ namespace LuckyTicket
             {
                 case TextMessages.MOSKOW:
 
-                    return UserMode.Moskow;
+                    return LuckyTicket.RunMode.Moskow;
 
                 case TextMessages.PITER:
 
-                    return UserMode.Piter;
+                    return LuckyTicket.RunMode.Piter;
 
                 default:
 
@@ -65,17 +65,17 @@ namespace LuckyTicket
             }
         }
 
-        public int RunMode(UserMode userMode)
+        public int RunMode(RunMode userMode)
         {
             switch (userMode)
             {
-                case UserMode.Moskow:
+                case LuckyTicket.RunMode.Moskow:
 
                     var moskowCounter = new LuckyTicketCuonter(new MoskowAlgorithm(), COUNT_OF_RANKS);
 
                     return moskowCounter.CountLucky(1, LAST_TIKET_NUMBER);
 
-                case UserMode.Piter:
+                case LuckyTicket.RunMode.Piter:
 
                     var piterCounter = new LuckyTicketCuonter(new PiterAlgorithm(), COUNT_OF_RANKS);
 
