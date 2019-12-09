@@ -1,0 +1,6 @@
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\bin\Debug\LuckyTicket.exe.config
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\bin\Debug\LuckyTicket.exe
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\bin\Debug\LuckyTicket.pdb
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\obj\Debug\LuckyTicket.csprojAssemblyReference.cache
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\obj\Debug\LuckyTicket.exe
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\obj\Debug\LuckyTicket.pdb
