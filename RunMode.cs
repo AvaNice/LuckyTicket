@@ -2,7 +2,7 @@
 {
     enum RunMode
     {
-        Moskow,
+        Moskow = 1,
         Piter
     }
 }

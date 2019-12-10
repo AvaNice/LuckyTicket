@@ -4,3 +4,9 @@ C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\bin\Debug\LuckyTicket.pdb
 C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\obj\Debug\LuckyTicket.csprojAssemblyReference.cache
 C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\obj\Debug\LuckyTicket.exe
 C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\obj\Debug\LuckyTicket.pdb
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\bin\Debug\Serilog.dll
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\bin\Debug\Serilog.Sinks.File.dll
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\bin\Debug\Serilog.xml
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\bin\Debug\Serilog.Sinks.File.pdb
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\bin\Debug\Serilog.Sinks.File.xml
+C:\C# .Net\ElementaryTasks\LuckyTicket\LuckyTicket\obj\Debug\LuckyTicket.csproj.CopyComplete

@@ -5,6 +5,7 @@
         private readonly int COUNT_OF_RANKS;
 
         private ITicketAlgorithm _algorithm;
+
         public LuckyTicketCuonter(ITicketAlgorithm algorithm, int countOfRanks)
         {
             _algorithm = algorithm;

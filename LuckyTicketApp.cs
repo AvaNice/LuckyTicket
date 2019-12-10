@@ -1,91 +1,62 @@
-﻿using System;
-using System.IO;
+﻿using Serilog;
+using System;
 
 namespace LuckyTicket
 {
     class LuckyTicketApp
     {
+        private const int RANK_DIVIDER = 10;
+        private const int MAX_RANK_VALUE = 9;
+
         private readonly int LAST_TIKET_NUMBER;
-        private readonly LuckyTicketUI UI = new LuckyTicketUI();
         private readonly int COUNT_OF_RANKS;
 
-        public LuckyTicketApp(int lastTiketNumber, int countOfRanks)
+        public LuckyTicketApp( int countOfRanks)
         {
-            LAST_TIKET_NUMBER = lastTiketNumber;
             COUNT_OF_RANKS = countOfRanks;
+            LAST_TIKET_NUMBER = CountLastTicketNumber(countOfRanks);
         }
 
-        public void Start()
+        public int Run(RunMode runMode)
         {
-           
-            try
-            {
-                RunMode runMod = GetMode(UI.GetUserPath());
+            int result = 0;
 
-                UI.ShowResult(RunMode(runMod).ToString());
-            }
-
-            catch (IOException ex)
-            {
-                // TODO log
-                UI.ShowResult(TextMessages.FILE_DONT_EXIST);
-            }
-
-            catch (ArgumentException ex)
-            {
-                //TODO log
-                UI.ShowResult(TextMessages.CANT_READ_MODE);
-            }
-
-            Start();
-        }
-
-        public RunMode GetMode(string path)
-        {
-            StreamReader reader = new StreamReader(path);
-
-            string line = reader.ReadLine();
-
-            switch (line.ToLower())
-            {
-                case TextMessages.MOSKOW:
-
-                    return LuckyTicket.RunMode.Moskow;
-
-                case TextMessages.PITER:
-
-                    return LuckyTicket.RunMode.Piter;
-
-                default:
-
-                    //TODO log
-
-                    throw new ArgumentException(TextMessages.CANT_READ_MODE);
-
-            }
-        }
-
-        public int RunMode(RunMode userMode)
-        {
-            switch (userMode)
+            switch (runMode)
             {
                 case LuckyTicket.RunMode.Moskow:
 
-                    var moskowCounter = new LuckyTicketCuonter(new MoskowAlgorithm(), COUNT_OF_RANKS);
-
-                    return moskowCounter.CountLucky(1, LAST_TIKET_NUMBER);
+                    LuckyTicketCuonter moskowCounter;
+                    moskowCounter = new LuckyTicketCuonter(new MoskowAlgorithm(), COUNT_OF_RANKS);
+                    result = moskowCounter.CountLucky(1, LAST_TIKET_NUMBER);
+                    break;
 
                 case LuckyTicket.RunMode.Piter:
 
-                    var piterCounter = new LuckyTicketCuonter(new PiterAlgorithm(), COUNT_OF_RANKS);
-
-                    return piterCounter.CountLucky(1, LAST_TIKET_NUMBER);
+                    LuckyTicketCuonter piterCounter;
+                    piterCounter = new LuckyTicketCuonter(new PiterAlgorithm(), COUNT_OF_RANKS);
+                    result = piterCounter.CountLucky(1, LAST_TIKET_NUMBER);
+                    break;
 
                 default:
 
-                    //TODO log
-                    throw new ArgumentException();
+                    Log.Logger.Error($"LuckyTiketApp.Run({runMode}) default:");
+
+                    throw new ArgumentException("Can't switch mode");
             }
+
+            return result;
+        }
+
+        private int CountLastTicketNumber (int countOfRanks)
+        {
+            double result = 0;
+
+            for (double index = 0; index < countOfRanks ; index++)
+            {
+                result = result + MAX_RANK_VALUE * Math.Pow(RANK_DIVIDER, index);
+            }
+
+            return Convert.ToInt32(result);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.IO;
 
 namespace LuckyTicket
@@ -15,6 +16,8 @@ namespace LuckyTicket
             {
                 return input;
             }
+
+            Log.Logger.Debug($"User input incorrect path: {input}");
 
             Console.WriteLine(TextMessages.FILE_DONT_EXIST);
 
