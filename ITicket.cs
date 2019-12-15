@@ -1,6 +1,6 @@
 ﻿namespace LuckyTicket
 {
-    interface ITicket
+    public interface ITicket
     {
         int CountOfRanks { get; }
 

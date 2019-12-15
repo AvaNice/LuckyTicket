@@ -1,6 +1,6 @@
 ﻿namespace LuckyTicket
 {
-    class PiterAlgorithm : ITicketAlgorithm
+    public class PiterAlgorithm : ITicketAlgorithm
     {
         private const int STEP_FOR_EVEN = 2;
 

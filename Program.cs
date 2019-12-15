@@ -4,7 +4,7 @@ using System.IO;
 
 namespace LuckyTicket
 {
-    class Program
+    public class Program
     {
         private const int COUNT_OF_RANKS = 6;
 
@@ -45,7 +45,10 @@ namespace LuckyTicket
                 Log.Logger.Error($"{ex.Message}");
             }
 
-            Main();
+            if(userInterface.IsOneMore())
+            {
+                Main();
+            }
         }
 
         public static RunMode GetMode(string path)

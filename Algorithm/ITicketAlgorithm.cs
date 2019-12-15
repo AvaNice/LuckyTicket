@@ -1,6 +1,6 @@
 ﻿namespace LuckyTicket
 {
-    interface ITicketAlgorithm
+    public interface ITicketAlgorithm
     {
         bool IsLucky(ITicket ticket);
     }

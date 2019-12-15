@@ -1,6 +1,6 @@
 ﻿namespace LuckyTicket
 {
-    enum RunMode
+    public enum RunMode
     {
         Moskow = 1,
         Piter

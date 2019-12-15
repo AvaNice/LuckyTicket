@@ -1,6 +1,6 @@
 ﻿namespace LuckyTicket
 {
-    class Ticket : ITicket
+    public class Ticket : ITicket
     {
         private const int RANK_DIVIDER = 10;
 

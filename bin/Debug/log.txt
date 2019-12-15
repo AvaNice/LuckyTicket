@@ -1,2 +1,5 @@
 2019-12-10 20:12:07.636 +02:00 [DBG] User input incorrect pathasdas
 2019-12-10 20:12:28.856 +02:00 [DBG] User input incorrect path: asasas
+2019-12-11 19:44:55.964 +02:00 [DBG] Algorithm(6) return 55251
+2019-12-15 22:12:50.087 +02:00 [DBG] Algorithm(6) return 55251
+2019-12-15 22:15:28.936 +02:00 [DBG] Algorithm(6) return 55251

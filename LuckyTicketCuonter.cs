@@ -1,15 +1,15 @@
 ﻿namespace LuckyTicket
 {
-    class LuckyTicketCuonter
+    public class LuckyTicketCuonter
     {
-        private readonly int COUNT_OF_RANKS;
+        private readonly int _countOfRanks;
 
         private ITicketAlgorithm _algorithm;
 
         public LuckyTicketCuonter(ITicketAlgorithm algorithm, int countOfRanks)
         {
             _algorithm = algorithm;
-            COUNT_OF_RANKS = countOfRanks;
+            _countOfRanks = countOfRanks;
         }
 
         public int CountLucky(int minValue, int maxValue)
@@ -18,7 +18,7 @@
 
             for (int index = minValue; index <= maxValue; index++)
             {
-                if (_algorithm.IsLucky(new Ticket(COUNT_OF_RANKS, index))) 
+                if (_algorithm.IsLucky(new Ticket(_countOfRanks, index))) 
                 {
                     counter++;
                 }

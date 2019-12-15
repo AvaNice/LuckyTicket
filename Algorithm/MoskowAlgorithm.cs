@@ -1,9 +1,7 @@
 ﻿namespace LuckyTicket
 {
-    class MoskowAlgorithm : ITicketAlgorithm
+    public class MoskowAlgorithm : ITicketAlgorithm
     {
-        private const int BISECTOR = 2;
-
         private ITicket _ticket;
 
         public bool IsLucky(ITicket ticket)
@@ -16,8 +14,8 @@
 
             countOfRanks = _ticket.CountOfRanks;
 
-            sumFirstHalf = CountHalf(0, countOfRanks / BISECTOR);
-            sumSecondHalf = CountHalf(countOfRanks / BISECTOR, countOfRanks);
+            sumFirstHalf = CountHalf(0, countOfRanks >> 1);
+            sumSecondHalf = CountHalf(countOfRanks >> 1, countOfRanks);
 
             if (sumFirstHalf == sumSecondHalf)
             {

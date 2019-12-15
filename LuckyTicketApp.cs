@@ -3,18 +3,17 @@ using System;
 
 namespace LuckyTicket
 {
-    class LuckyTicketApp
+    public class LuckyTicketApp
     {
         private const int RANK_DIVIDER = 10;
-        private const int MAX_RANK_VALUE = 9;
-
-        private readonly int LAST_TIKET_NUMBER;
-        private readonly int COUNT_OF_RANKS;
+      
+        private readonly int _lastTicketNumber;
+        private readonly int _countOfRanks;
 
         public LuckyTicketApp( int countOfRanks)
         {
-            COUNT_OF_RANKS = countOfRanks;
-            LAST_TIKET_NUMBER = CountLastTicketNumber(countOfRanks);
+            _countOfRanks = countOfRanks;
+            _lastTicketNumber = CountLastTicketNumber(countOfRanks);
         }
 
         public int Run(RunMode runMode)
@@ -26,15 +25,15 @@ namespace LuckyTicket
                 case LuckyTicket.RunMode.Moskow:
 
                     LuckyTicketCuonter moskowCounter;
-                    moskowCounter = new LuckyTicketCuonter(new MoskowAlgorithm(), COUNT_OF_RANKS);
-                    result = moskowCounter.CountLucky(1, LAST_TIKET_NUMBER);
+                    moskowCounter = new LuckyTicketCuonter(new MoskowAlgorithm(), _countOfRanks);
+                    result = moskowCounter.CountLucky(1, _lastTicketNumber);
                     break;
 
                 case LuckyTicket.RunMode.Piter:
 
                     LuckyTicketCuonter piterCounter;
-                    piterCounter = new LuckyTicketCuonter(new PiterAlgorithm(), COUNT_OF_RANKS);
-                    result = piterCounter.CountLucky(1, LAST_TIKET_NUMBER);
+                    piterCounter = new LuckyTicketCuonter(new PiterAlgorithm(), _countOfRanks);
+                    result = piterCounter.CountLucky(1, _lastTicketNumber);
                     break;
 
                 default:
@@ -49,12 +48,7 @@ namespace LuckyTicket
 
         private int CountLastTicketNumber (int countOfRanks)
         {
-            double result = 0;
-
-            for (double index = 0; index < countOfRanks ; index++)
-            {
-                result = result + MAX_RANK_VALUE * Math.Pow(RANK_DIVIDER, index);
-            }
+            double result = Math.Pow(RANK_DIVIDER, _countOfRanks) - 1;
 
             return Convert.ToInt32(result);
         }

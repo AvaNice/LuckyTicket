@@ -4,7 +4,7 @@ using System.IO;
 
 namespace LuckyTicket
 {
-    class LuckyTicketUI
+    public class LuckyTicketUI
     {
         public string GetUserPath()
         {
@@ -27,6 +27,36 @@ namespace LuckyTicket
         public void ShowResult(string result)
         {
             Console.WriteLine(result);
+        }
+
+        public bool IsOneMore()
+        {
+            string input;
+            bool result;
+
+            Console.WriteLine(TextMessages.NEED_MORE);
+            input = Console.ReadLine();
+
+            switch (input.ToLower())
+            {
+                case TextMessages.YES:
+                case TextMessages.YES_SECOND:
+                    result = true;
+                    break;
+
+                case TextMessages.NO:
+                case TextMessages.NO_SECOND:
+                    result = false;
+                    break;
+
+                default:
+                    Log.Logger.Information($"UI default. User input {input}");
+                    Console.WriteLine(TextMessages.CANT_READ_MORE);
+
+                    return IsOneMore();
+            }
+
+            return result;
         }
     }
 }
